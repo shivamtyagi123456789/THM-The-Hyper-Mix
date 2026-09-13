@@ -91,7 +91,7 @@ The frontend represents a cyber-studio mixing console tailored to music producti
 ### Installation
 ```bash
 # 1. Clone repository
-git clone https://github.com/your-username/THM-The-Hyper-Mix.git
+git clone https://github.com/shivamtyagi123456789/THM-The-Hyper-Mix.git
 cd THM-The-Hyper-Mix
 
 # 2. Install dependencies
