@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>True Hyper Mixing (THM) — Vibe Preservation Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="theme-dark">
+  <!-- Audio Reactive Background Aura Canvas (Video Concept 4) -->
+  <canvas id="ambient-aura-canvas"></canvas>
+  <div class="noise-overlay"></div>
+
+  <div class="app-container">
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="logo-area">
+        <div class="logo-symbol">
+          <span class="pulse-ring"></span>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="brand-name">TRUE HYPER MIXING</span>
+          <span class="brand-tag">52-DIMENSION VIBE ENGINE</span>
+        </div>
+      </div>
+
+      <div class="nav-metrics">
+        <div class="metric-pill">
+          <span class="dot live"></span>
+          <span id="lib-count-badge">93 Tracks Analysed</span>
+        </div>
+        <div class="metric-pill mode-pill">
+          <span class="label">ARC TARGET:</span>
+          <span id="active-arc-label">STEADY</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="main-layout">
+      
+      <!-- LEFT / CENTER COLUMN: Studio Centerpiece & Lyrics Player -->
+      <section class="stage-column">
+        
+        <!-- Studio Production Centerpiece Hero (Replacing 3D Juice Can) -->
+        <div class="studio-deck-card">
+          <div class="deck-header">
+            <div class="deck-title-area">
+              <span class="deck-badge">STUDIO MASTERING CONSOLE</span>
+              <h2 id="hero-status">Awaiting Needle Drop</h2>
+            </div>
+            <div class="deck-vu-meters">
+              <div class="vu-channel">
+                <span class="vu-label">L</span>
+                <div class="vu-bar"><div class="vu-fill" id="vu-l"></div></div>
+              </div>
+              <div class="vu-channel">
+                <span class="vu-label">R</span>
+                <div class="vu-bar"><div class="vu-fill" id="vu-r"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="deck-interactive-stage">
+            <!-- Studio Turntable Visualizer -->
+            <div class="turntable-container" id="turntable">
+              <div class="platter-base">
+                <div class="vinyl-record" id="vinyl">
+                  <div class="vinyl-grooves"></div>
+                  <div class="vinyl-label" id="vinyl-art">
+                    <div class="vinyl-hole"></div>
+                    <span class="vinyl-title" id="vinyl-title">THM CORE</span>
+                  </div>
+                </div>
+                <!-- Tonearm Stylus -->
+                <div class="tonearm" id="tonearm">
+                  <div class="pivot"></div>
+                  <div class="arm"></div>
+                  <div class="cartridge"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Track Info & Vibe Metrics -->
+            <div class="current-track-info">
+              <div class="vibe-tag-strip" id="track-vibe-tags">
+                <span class="vibe-chip theme-chip">SELECT ANCHOR</span>
+                <span class="vibe-chip tempo-chip">-- BPM</span>
+                <span class="vibe-chip key-chip">KEY --</span>
+              </div>
+              <h1 class="track-title" id="now-playing-title">Select a Track to Begin</h1>
+              <p class="track-artist" id="now-playing-artist">Intelligent vibe preservation will sequence the room</p>
+              
+              <div class="telemetry-grid">
+                <div class="telemetry-box">
+                  <span class="tel-label">ENERGY</span>
+                  <div class="tel-bar-wrap">
+                    <div class="tel-bar" id="tel-energy" style="width: 0%"></div>
+                  </div>
+                  <span class="tel-val" id="tel-energy-val">0.00</span>
+                </div>
+                <div class="telemetry-box">
+                  <span class="tel-label">ACOUSTIC</span>
+                  <div class="tel-bar-wrap">
+                    <div class="tel-bar" id="tel-acoustic" style="width: 0%"></div>
+                  </div>
+                  <span class="tel-val" id="tel-acoustic-val">0.00</span>
+                </div>
+                <div class="telemetry-box">
+                  <span class="tel-label">VOCALS</span>
+                  <div class="tel-bar-wrap">
+                    <div class="tel-bar" id="tel-vocal" style="width: 0%"></div>
+                  </div>
+                  <span class="tel-val" id="tel-vocal-val">0.00</span>
+                </div>
+                <div class="telemetry-box">
+                  <span class="tel-label">LUFS</span>
+                  <span class="tel-val lufs" id="tel-lufs-val">-14.0 dB</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Playback & Arc Controls -->
+          <div class="playback-controls-bar">
+            <div class="timeline-row">
+              <span class="time-label" id="time-current">0:00</span>
+              <div class="seek-slider-container" id="seek-container">
+                <div class="seek-fill" id="seek-fill"></div>
+              </div>
+              <span class="time-label" id="time-duration">0:00</span>
+            </div>
+
+            <div class="control-buttons-row">
+              <!-- Arc Selector -->
+              <div class="arc-selector" title="Session Arc: How the queue drifts">
+                <button class="arc-btn active" data-arc="steady">Steady Vibe</button>
+                <button class="arc-btn" data-arc="rising">Rising Arc (+4 BPM)</button>
+                <button class="arc-btn" data-arc="cooling_down">Cooling Down</button>
+              </div>
+
+              <!-- Main Transport -->
+              <div class="transport-group">
+                <button class="btn-ctrl" id="btn-prev" title="Previous Track">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6 6 6 18 16 12 6 6"/><rect x="18" y="6" width="2" height="12"/></svg>
+                </button>
+                <button class="btn-ctrl play-pulse" id="btn-play" title="Play/Pause">
+                  <svg id="play-icon" viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><polygon points="8 5 19 12 8 19 8 5"/></svg>
+                  <svg id="pause-icon" class="hidden" viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+                </button>
+                <button class="btn-ctrl" id="btn-skip" title="Skip (Logs Transition Rejection)">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="18 6 18 18 8 12 18 6"/><rect x="4" y="6" width="2" height="12"/></svg>
+                </button>
+              </div>
+
+              <!-- Volume & Smart Mix Badge -->
+              <div class="volume-group">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.85" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Intelligent Transition Visualizer (Video Concept 2) -->
+        <div class="transition-bridge-card hidden" id="transition-card">
+          <div class="bridge-header">
+            <span class="bridge-badge">SMART TRANSITION IN PROGRESS</span>
+            <span class="bridge-status" id="bridge-status">Aligning Vibe Vectors...</span>
+          </div>
+          <div class="bridge-body">
+            <div class="bridge-track-side" id="bridge-out">
+              <span class="bridge-role">OUTGOING SEED</span>
+              <h4 id="bridge-out-title">Song A</h4>
+              <span class="bridge-bpm" id="bridge-out-bpm">80 BPM</span>
+            </div>
+            <div class="bridge-connection">
+              <div class="bridge-score-ring">
+                <span class="bridge-match-score" id="bridge-match-val">96%</span>
+                <span class="bridge-match-label">VIBE MATCH</span>
+              </div>
+              <div class="bridge-flow-arrow">
+                <span class="flowing-particle"></span>
+                <span class="flowing-particle"></span>
+              </div>
+            </div>
+            <div class="bridge-track-side" id="bridge-in">
+              <span class="bridge-role">NEXT IMMERSIVE PICK</span>
+              <h4 id="bridge-in-title">Song B</h4>
+              <span class="bridge-bpm" id="bridge-in-bpm">88 BPM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kinetic Synced Lyrics Display (Video Concept 3) -->
+        <div class="lyrics-theater-card">
+          <div class="lyrics-card-header">
+            <div class="lyrics-headline">
+              <span class="lyrics-badge">KINETIC SYNCED LYRICS</span>
+              <span class="lyrics-script-tag" id="lyrics-script-tag">MULTI-SCRIPT ENGINE</span>
+            </div>
+            <span class="lyrics-status-label" id="lyrics-sync-indicator">Synchronized</span>
+          </div>
+
+          <div class="lyrics-scroll-container" id="lyrics-scroll">
+            <div class="lyrics-content-track" id="lyrics-content">
+              <div class="lyric-line placeholder">Play a track to reveal synced typography</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Raftaar Music Video Posters Showcase (Replacing the Fruits from can ad) -->
+        <div class="posters-showcase-section">
+          <div class="section-title-wrap">
+            <div class="title-with-badge">
+              <h3 class="section-title">FEATURED ARTIST SHOWCASE — RAFTAAR</h3>
+              <span class="gold-badge">CANONICAL DIRECTIVES</span>
+            </div>
+            <p class="section-sub">Official music video posters & high-energy anchors. Click any card to anchor the room's vibe.</p>
+          </div>
+
+          <div class="posters-carousel" id="posters-carousel">
+            <!-- Rendered dynamically by JS -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- RIGHT COLUMN: Smart Vibe Queue & Library Browser -->
+      <aside class="sidebar-column">
+        
+        <!-- Up Next Smart Queue -->
+        <div class="queue-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-badge">CONTINUOUS FLOW</span>
+              <h3>Upcoming Vibe Queue</h3>
+            </div>
+            <span class="queue-depth-badge" id="queue-count">5 In Buffer</span>
+          </div>
+
+          <p class="panel-hint">Ranked across 52 dimensions. Disqualifying moods are locked out.</p>
+
+          <div class="queue-list" id="queue-list">
+            <!-- Dynamic Queue Items -->
+            <div class="queue-empty-state">Queue will populate dynamically upon selecting a track.</div>
+          </div>
+        </div>
+
+        <!-- All Tracks Library Explorer -->
+        <div class="library-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="panel-badge">LOCAL VAULT</span>
+              <h3>93-Track Library</h3>
+            </div>
+            <input type="text" id="library-search" placeholder="Search track, artist, mood..." />
+          </div>
+
+          <div class="library-list" id="library-list">
+            <!-- Dynamic library items -->
+          </div>
+        </div>
+
+      </aside>
+    </main>
+
+    <!-- "Why This Song?" Explanation Modal -->
+    <div class="modal-backdrop hidden" id="why-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title-area">
+            <span class="modal-badge">ALGORITHMIC EXPLANATION</span>
+            <h3 id="modal-title">Why This Song?</h3>
+          </div>
+          <button class="btn-close-modal" id="btn-close-modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="match-summary-card">
+            <div class="score-display">
+              <span class="big-score" id="modal-score">95.9%</span>
+              <span class="score-sub">COMPOSITE SIMILARITY</span>
+            </div>
+            <div class="match-meta">
+              <div class="meta-row"><strong>Anchor:</strong> <span id="modal-anchor-name">--</span></div>
+              <div class="meta-row"><strong>Next Candidate:</strong> <span id="modal-candidate-name">--</span></div>
+              <div class="meta-row"><strong>Tie-Break Factor:</strong> <span id="modal-tiebreak">--</span></div>
+            </div>
+          </div>
+
+          <h4 class="contrib-title">Top Contributing Dimensions</h4>
+          <div class="contributions-list" id="modal-contribs">
+            <!-- Filled dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="audio-player" crossorigin="anonymous" preload="auto"></audio>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
