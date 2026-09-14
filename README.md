@@ -4,7 +4,26 @@
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue.svg)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Phase 1 Gate](https://img.shields.io/badge/Phase%201%20Gate-17%2F17%20Clean-success.svg)](docs/PHASE_1_REPORT.md)
-[![Vibe Model](https://img.shields.io/badge/Perceptual%20Model-52%20Dimensions-orange.svg)](docs/52_DIMENSIONS.md)
+[![Perceptual Model](https://img.shields.io/badge/Perceptual%20Model-52%20Dimensions-orange.svg)](docs/52_DIMENSIONS.md)
+[![Preview Video](https://img.shields.io/badge/Animated%20Preview-1080p%20HD-purple.svg)](assets/THM_Final_Animated_Preview.mp4)
+
+---
+
+## 🎬 Product Preview: The Hyper Mix Experience
+
+Experience the full interactive visual flow of THM in motion — featuring studio mixing telemetry, the 3D card-shuffle transition, Orrery orbital kinetic synced lyrics (featuring Raftaar's canonical *Dance India Dance* resilience bar), and the 3D chrome resonator engine:
+
+> **[▶ Download / Watch Official 18s HD Animated Preview Video (MP4)](assets/THM_Final_Animated_Preview.mp4)**
+
+| **Scene 1: Studio Console & Raftaar Showcase** | **Scene 2: 3D Deck Card Transition** |
+| :---: | :---: |
+| ![Scene 1](assets/preview_frames/scene_1_frame_60.jpg) | ![Scene 2](assets/preview_frames/scene_2_frame_210.jpg) |
+| *Studio condenser mic & 5 official Raftaar cover posters* | *3D deck shuffle & Adversarial Drill Rejection* |
+
+| **Scene 3: Orrery Kinetic Synced Lyrics** | **Scene 4: 3D Chrome Resonator Outro** |
+| :---: | :---: |
+| ![Scene 3](assets/preview_frames/scene_3_frame_350.jpg) | ![Scene 4](assets/preview_frames/scene_4_frame_480.jpg) |
+| *Word-by-word active glow & Deep Meaning resolution* | *3D gyro metallic ring with gyroscopic perspective* |
 
 ---
 
